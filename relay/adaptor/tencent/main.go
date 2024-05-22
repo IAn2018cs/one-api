@@ -222,7 +222,7 @@ func GetSign(req ChatRequest, secretKey string) string {
 	params = append(params, "messages=["+messageStr+"]")
 
 	sort.Strings(params)
-	url := "hunyuan.tencentcloudapi.com/?" + strings.Join(params, "&")
+	url := "hunyuan.cloud.tencent.com/hyllm/v1/chat/completions?" + strings.Join(params, "&")
 	mac := hmac.New(sha1.New, []byte(secretKey))
 	signURL := url
 	mac.Write([]byte(signURL))
