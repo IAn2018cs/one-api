@@ -43,6 +43,7 @@ func ConvertRequest(request model.GeneralOpenAIRequest) *ChatRequest {
 		Timestamp:   helper.GetTimestamp(),
 		Expired:     helper.GetTimestamp() + 24*60*60,
 		QueryID:     random.GetUUID(),
+		Model:       request.Model,
 		Temperature: request.Temperature,
 		TopP:        request.TopP,
 		Stream:      stream,
@@ -221,7 +222,7 @@ func GetSign(req ChatRequest, secretKey string) string {
 	params = append(params, "messages=["+messageStr+"]")
 
 	sort.Strings(params)
-	url := "hunyuan.cloud.tencent.com/hyllm/v1/chat/completions?" + strings.Join(params, "&")
+	url := "hunyuan.tencentcloudapi.com?" + strings.Join(params, "&")
 	mac := hmac.New(sha1.New, []byte(secretKey))
 	signURL := url
 	mac.Write([]byte(signURL))

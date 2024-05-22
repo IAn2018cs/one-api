@@ -24,13 +24,13 @@ func (a *Adaptor) Init(meta *meta.Meta) {
 }
 
 func (a *Adaptor) GetRequestURL(meta *meta.Meta) (string, error) {
-	return fmt.Sprintf("%s/hyllm/v1/chat/completions", meta.BaseURL), nil
+	return fmt.Sprintf("%s", meta.BaseURL), nil
 }
 
 func (a *Adaptor) SetupRequestHeader(c *gin.Context, req *http.Request, meta *meta.Meta) error {
 	adaptor.SetupCommonRequestHeader(c, req, meta)
 	req.Header.Set("Authorization", a.Sign)
-	req.Header.Set("X-TC-Action", meta.ActualModelName)
+	req.Header.Set("X-TC-Action", "ChatCompletions")
 	return nil
 }
 

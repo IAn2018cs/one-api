@@ -12,6 +12,7 @@ type Message struct {
 type ChatRequest struct {
 	AppId    int64  `json:"app_id"`    // 腾讯云账号的 APPID
 	SecretId string `json:"secret_id"` // 官网 SecretId
+	Model string `json:"model"` //请求 Id，用于问题排查
 	// Timestamp当前 UNIX 时间戳，单位为秒，可记录发起 API 请求的时间。
 	// 例如1529223702，如果与当前时间相差过大，会引起签名过期错误
 	Timestamp int64 `json:"timestamp"`
