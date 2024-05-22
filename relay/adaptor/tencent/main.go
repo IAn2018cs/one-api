@@ -43,7 +43,6 @@ func ConvertRequest(request model.GeneralOpenAIRequest) *ChatRequest {
 		Timestamp:   helper.GetTimestamp(),
 		Expired:     helper.GetTimestamp() + 24*60*60,
 		QueryID:     random.GetUUID(),
-		Model:       request.Model,
 		Temperature: request.Temperature,
 		TopP:        request.TopP,
 		Stream:      stream,
