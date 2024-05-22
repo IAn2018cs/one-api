@@ -149,7 +149,7 @@ export const CHANNEL_OPTIONS = {
     value: 39,
     color: 'primary'
   },
-  39: {
+  40: {
     key: 40,
     text: '豆包',
     value: 40,
